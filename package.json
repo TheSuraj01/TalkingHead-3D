@@ -29,7 +29,8 @@
     "preview": "vite preview",
     "server": "node server.js",
     "start": "node server.js",
-    "test": "node test-endpoints.mjs"
+    "test": "node test-endpoints.mjs",
+    "execute": "npm run build && npm run start"
   },
   "repository": {
     "type": "git",
