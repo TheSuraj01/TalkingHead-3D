@@ -652,9 +652,12 @@ app.use((err, req, res, next) => {
 });
 
 // Start Server
-const server = app.listen(PORT, '0.0.0.0', () => {
-  console.log(`TalkingHead service running at http://localhost:${PORT}`);
-});
+let server;
+if (!process.env.VERCEL) {
+  server = app.listen(PORT, '0.0.0.0', () => {
+    console.log(`TalkingHead service running at http://localhost:${PORT}`);
+  });
+}
 
 // Graceful Shutdown
 function handleShutdown(signal) {
@@ -663,11 +666,15 @@ function handleShutdown(signal) {
     try { client.res.end(); } catch {}
   }
   sseClients.clear();
-  server.close(() => {
-    console.log('[Server] Server closed cleanly.');
-    process.exit(0);
-  });
+  if (server) {
+    server.close(() => {
+      console.log('[Server] Server closed cleanly.');
+      process.exit(0);
+    });
+  }
 }
 
 process.on('SIGINT', () => handleShutdown('SIGINT'));
 process.on('SIGTERM', () => handleShutdown('SIGTERM'));
+
+export default app;

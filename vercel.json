@@ -1,0 +1,11 @@
+{
+  "version": 2,
+  "rewrites": [
+    { "source": "/api/(.*)", "destination": "/server.js" },
+    { "source": "/health", "destination": "/server.js" },
+    { "source": "/app/(.*)", "destination": "/server.js" },
+    { "source": "/openai/(.*)", "destination": "/server.js" },
+    { "source": "/gtts/(.*)", "destination": "/server.js" },
+    { "source": "/(.*)", "destination": "/$1" }
+  ]
+}
