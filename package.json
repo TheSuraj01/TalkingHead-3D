@@ -1,0 +1,52 @@
+{
+  "name": "talkinghead-avatar-service",
+  "version": "1.0.0",
+  "description": "TalkingHead: Real-time 3D Avatar-as-a-Service & Visual UI for Chatbots and AI Assistants with real-time lip-sync, free Neural TTS, and Qwen 3 27B on Groq.",
+  "type": "module",
+  "main": "modules/talkinghead.mjs",
+  "engines": {
+    "node": ">=18.0.0"
+  },
+  "files": [
+    "README.md",
+    "INTEGRATION.md",
+    "LICENSE",
+    "modules/*"
+  ],
+  "dependencies": {
+    "cors": "^2.8.6",
+    "dotenv": "^18.0.8",
+    "express": "^5.3.0",
+    "jsonwebtoken": "^9.0.3",
+    "msedge-tts": "^2.1.0",
+    "three": "^0.180.0"
+  },
+  "scripts": {
+    "start": "node server.js",
+    "dev": "node server.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/thesuraj396/TalkingHead.git"
+  },
+  "keywords": [
+    "talkinghead",
+    "avatar-as-a-service",
+    "chatbot-ui",
+    "ai-assistant",
+    "3d-avatar",
+    "lip-sync",
+    "qwen3",
+    "groq",
+    "edge-tts",
+    "threejs",
+    "ready-player-me"
+  ],
+  "author": "Suraj Yadav <thesuraj396@gmail.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/thesuraj396/TalkingHead/issues"
+  },
+  "homepage": "https://github.com/thesuraj396/TalkingHead#readme"
+}
