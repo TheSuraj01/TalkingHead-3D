@@ -1,24 +1,18 @@
 {
   "$schema": "https://openapi.vercel.sh/vercel.json",
   "version": 2,
-  "builds": [
-    {
-      "src": "package.json",
-      "use": "@vercel/static-build",
-      "config": { "distDir": "dist" }
-    },
-    {
-      "src": "api/index.js",
-      "use": "@vercel/node"
+  "outputDirectory": "dist",
+  "functions": {
+    "api/index.js": {
+      "runtime": "nodejs20.x"
     }
-  ],
-  "routes": [
-    { "src": "/health",         "dest": "/api/index.js" },
-    { "src": "/api/(.*)",       "dest": "/api/index.js" },
-    { "src": "/openai/(.*)",    "dest": "/api/index.js" },
-    { "src": "/gtts/(.*)",      "dest": "/api/index.js" },
-    { "src": "/app/(.*)",       "dest": "/api/index.js" },
-    { "src": "/gemini/(.*)",    "dest": "/api/index.js" },
-    { "src": "/(.*)",           "dest": "/$1" }
+  },
+  "rewrites": [
+    { "source": "/health",       "destination": "/api/index.js" },
+    { "source": "/api/:path*",   "destination": "/api/index.js" },
+    { "source": "/openai/:path*","destination": "/api/index.js" },
+    { "source": "/gtts/:path*",  "destination": "/api/index.js" },
+    { "source": "/app/:path*",   "destination": "/api/index.js" },
+    { "source": "/gemini/:path*","destination": "/api/index.js" }
   ]
 }
