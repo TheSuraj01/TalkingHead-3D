@@ -1,15 +1,5 @@
 {
-  "headers": [
-    {
-      "source": "/(.*)\\.mjs",
-      "headers": [
-        {
-          "key": "Content-Type",
-          "value": "application/javascript"
-        }
-      ]
-    }
-  ],
+  "$schema": "https://openapi.vercel.sh/vercel.json",
   "rewrites": [
     { "source": "/health", "destination": "/api/index.js" },
     { "source": "/openai/(.*)", "destination": "/api/index.js" },

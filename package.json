@@ -15,16 +15,21 @@
   ],
   "dependencies": {
     "cors": "^2.8.6",
+    "dompurify": "^3.4.17",
     "dotenv": "^18.0.8",
     "express": "^5.3.0",
     "jsonwebtoken": "^9.0.3",
+    "marked": "^18.1.1",
     "msedge-tts": "^2.1.0",
     "three": "^0.180.0"
   },
   "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview",
+    "server": "node server.js",
     "start": "node server.js",
-    "dev": "node server.js",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "node test-endpoints.mjs"
   },
   "repository": {
     "type": "git",
@@ -48,5 +53,8 @@
   "bugs": {
     "url": "https://github.com/TheSuraj01/TalkingHead-3D/issues"
   },
-  "homepage": "https://github.com/TheSuraj01/TalkingHead-3D#readme"
+  "homepage": "https://github.com/TheSuraj01/TalkingHead-3D#readme",
+  "devDependencies": {
+    "vite": "^8.3.5"
+  }
 }

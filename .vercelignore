@@ -1,0 +1,14 @@
+.env
+.env.*
+node_modules
+.git
+.github
+*.log
+.agents
+.gemini
+package.json
+package-lock.json
+README.md
+INTEGRATION.md
+contributing.md
+LICENSE

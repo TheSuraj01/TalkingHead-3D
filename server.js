@@ -3,6 +3,7 @@ import cors from 'cors';
 import dotenv from 'dotenv';
 import jwt from 'jsonwebtoken';
 import path from 'path';
+import fs from 'fs';
 import { fileURLToPath } from 'url';
 import { MsEdgeTTS, OUTPUT_FORMAT } from 'msedge-tts';
 
@@ -636,8 +637,9 @@ app.use('/gemini', async (req, res) => {
   }
 });
 
-// Static Files
-app.use(express.static(__dirname, {
+// Static Files: serve compiled Vite dist if present, otherwise __dirname
+const staticDir = fs.existsSync(path.join(__dirname, 'dist')) ? path.join(__dirname, 'dist') : __dirname;
+app.use(express.static(staticDir, {
   setHeaders: (res, filepath) => {
     if (filepath.endsWith('.mjs')) {
       res.setHeader('Content-Type', 'application/javascript');
@@ -645,10 +647,22 @@ app.use(express.static(__dirname, {
   }
 }));
 
+// 404 Not Found Handler
+app.use((req, res, next) => {
+  if (req.accepts('json')) {
+    return res.status(404).json({
+      error: 'Not Found',
+      path: req.originalUrl || req.url,
+      message: 'The requested endpoint does not exist. See GET /api/status for available endpoints.'
+    });
+  }
+  res.status(404).send('Not Found');
+});
+
 // Global Error Handler
 app.use((err, req, res, next) => {
   console.error('[Server Error]', err.stack || err.message);
-  res.status(500).json({ error: { message: 'Internal server error' } });
+  res.status(500).json({ error: { message: err.message || 'Internal server error' } });
 });
 
 // Start Server
