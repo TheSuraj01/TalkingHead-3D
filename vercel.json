@@ -1,11 +1,20 @@
 {
-  "version": 2,
+  "headers": [
+    {
+      "source": "/(.*)\\.mjs",
+      "headers": [
+        {
+          "key": "Content-Type",
+          "value": "application/javascript"
+        }
+      ]
+    }
+  ],
   "rewrites": [
-    { "source": "/api/(.*)", "destination": "/server.js" },
-    { "source": "/health", "destination": "/server.js" },
-    { "source": "/app/(.*)", "destination": "/server.js" },
-    { "source": "/openai/(.*)", "destination": "/server.js" },
-    { "source": "/gtts/(.*)", "destination": "/server.js" },
-    { "source": "/(.*)", "destination": "/$1" }
+    { "source": "/health", "destination": "/api/index.js" },
+    { "source": "/openai/(.*)", "destination": "/api/index.js" },
+    { "source": "/gtts/(.*)", "destination": "/api/index.js" },
+    { "source": "/app/(.*)", "destination": "/api/index.js" },
+    { "source": "/api/(.*)", "destination": "/api/index.js" }
   ]
 }
