@@ -3,9 +3,7 @@
   "version": 2,
   "outputDirectory": "dist",
   "functions": {
-    "api/index.js": {
-      "runtime": "nodejs20.x"
-    }
+    "api/index.js": {}
   },
   "rewrites": [
     { "source": "/health",       "destination": "/api/index.js" },
