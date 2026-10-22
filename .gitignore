@@ -37,3 +37,12 @@ build/
 coverage/
 tmp/
 scratch/
+
+# Root-level asset directories (canonical copies live in public/)
+/animations/
+/audio/
+/avatars/
+/modules/
+/poses/
+/views/
+/favicon.jpg

@@ -1,14 +1,18 @@
+# Secrets (never deploy these)
 .env
 .env.*
-node_modules
+
+# Version control
 .git
 .github
-*.log
+
+# Dev tooling
 .agents
 .gemini
-package.json
-package-lock.json
-README.md
-INTEGRATION.md
-contributing.md
-LICENSE
+
+# Logs
+*.log
+
+# Local development only
+test-endpoints.mjs
+.editorconfig
